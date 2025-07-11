@@ -36,10 +36,19 @@
     </form>
 
     <!-- AI Result -->
-    <div id="aiResult" class="mt-12 hidden">
-      <h3 class="text-2xl font-bold mb-4 text-gray-800">AI Recommendation</h3>
-      <div id="aiText" class="bg-white border border-gray-200 rounded p-6 shadow text-gray-700 whitespace-pre-line"></div>
+   <!-- AI Result -->
+<div id="aiResult" class="mt-12 hidden">
+  <h3 class="text-2xl font-bold mb-4 text-gray-800">AI Recommendation</h3>
+  <div id="aiText" class="bg-white border border-blue-200 rounded-xl p-6 shadow-md text-gray-800 whitespace-pre-line leading-relaxed tracking-normal text-[17px]">
+    <div class="flex items-center gap-2 text-blue-700 font-semibold text-lg mb-3">
+      🤖 CompAIro Verdict
     </div>
+    <div id="aiContentText">
+      <!-- AI response will appear here -->
+    </div>
+  </div>
+</div>
+
   </section>
 
   <!-- Top Categories Section (unchanged) -->
@@ -142,9 +151,11 @@
         });
 
         const data = await response.json();
-        aiText.textContent = data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content
-          ? data.choices[0].message.content
-          : 'No response from AI.';
+document.getElementById('aiContentText').textContent =
+  data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content
+    ? data.choices[0].message.content
+    : 'No response from AI.';
+
       } catch (err) {
         aiText.textContent = 'An error occurred while fetching AI response.';
         console.error(err);
