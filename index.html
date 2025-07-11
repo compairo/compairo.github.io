@@ -120,7 +120,7 @@
 3. ${p3}` : ''}`;
 
       try {
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        const response = await fetch('https://compairo-groq-proxy.onrender.com/api/groq', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
