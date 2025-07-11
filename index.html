@@ -12,16 +12,28 @@
     }
   </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
+<body class="bg-white text-gray-900 font-sans scroll-smooth">
   <!-- Hero Section -->
   <header class="bg-gray-900 text-white py-16 text-center">
     <h1 class="text-4xl font-bold mb-4">Welcome to <span class="text-white">Comp</span><span class="highlight-ai">AI</span><span class="text-white">ro</span></h1>
     <p class="text-lg mb-6">Compare anything. Choose smart with AI.</p>
     <div>
-      <a href="#compare" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded mr-4">Compare Now</a>
-      <a href="#askai" class="bg-white text-gray-900 px-6 py-2 border rounded hover:bg-gray-100">Ask AI</a>
+      <a href="#manualcompare" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded mr-4 focus:ring-4 ring-teal-300 transition">Compare Now</a>
+      <a href="#askai" class="bg-white text-gray-900 px-6 py-2 border rounded hover:bg-gray-100 focus:ring-4 ring-gray-300 transition">Ask AI</a>
     </div>
   </header>
+
+  <!-- Manual Compare Section -->
+  <section id="manualcompare" class="py-12 px-6 max-w-3xl mx-auto">
+    <h2 class="text-2xl font-bold mb-6 text-center">Manual Product Comparison</h2>
+    <p class="text-center text-gray-600 mb-8">Type up to three product names or model numbers you’d like to compare, then press <strong>Compare</strong>.</p>
+    <form class="space-y-4">
+      <input type="text" placeholder="Product 1 (e.g., iPhone 15)" class="w-full px-4 py-2 border rounded" />
+      <input type="text" placeholder="Product 2 (e.g., Samsung S24 Ultra)" class="w-full px-4 py-2 border rounded" />
+      <input type="text" placeholder="Product 3 (optional)" class="w-full px-4 py-2 border rounded" />
+      <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded text-lg font-semibold">Compare</button>
+    </form>
+  </section>
 
   <!-- Top Categories -->
   <section class="py-12 px-6 max-w-6xl mx-auto" id="categories">
