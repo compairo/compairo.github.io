@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CompAIro - Compare Smart. Choose Better.</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .highlight-ai {
+      color: #06b6d4;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans">
+  <!-- Hero Section -->
+  <header class="bg-gray-900 text-white py-16 text-center">
+    <h1 class="text-4xl font-bold mb-4">Welcome to <span class="highlight-ai">CompAIro</span></h1>
+    <p class="text-lg mb-6">Compare anything. Choose smart with AI.</p>
+    <div>
+      <a href="#compare" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded mr-4">Compare Now</a>
+      <a href="#askai" class="bg-white text-gray-900 px-6 py-2 border rounded hover:bg-gray-100">Ask AI</a>
+    </div>
+  </header>
+
+  <!-- Top Categories -->
+  <section class="py-12 px-6 max-w-6xl mx-auto" id="categories">
+    <h2 class="text-2xl font-bold mb-6 text-center">Top Categories</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div class="p-4 border rounded shadow">📱 Mobiles</div>
+      <div class="p-4 border rounded shadow">💻 Laptops</div>
+      <div class="p-4 border rounded shadow">🧊 Appliances</div>
+      <div class="p-4 border rounded shadow">👟 Fashion</div>
+      <div class="p-4 border rounded shadow">🛵 Scooters</div>
+      <div class="p-4 border rounded shadow">🚗 Cars</div>
+      <div class="p-4 border rounded shadow">🎧 Gadgets</div>
+      <div class="p-4 border rounded shadow">📚 Books</div>
+    </div>
+  </section>
+
+  <!-- Popular Comparisons -->
+  <section class="py-12 px-6 max-w-4xl mx-auto" id="compare">
+    <h2 class="text-2xl font-bold mb-6 text-center">Popular Comparisons</h2>
+    <ul class="space-y-4">
+      <li class="p-4 border rounded hover:bg-gray-50 cursor-pointer">iPhone 15 vs Samsung S24 Ultra</li>
+      <li class="p-4 border rounded hover:bg-gray-50 cursor-pointer">LG 1.5 Ton AC vs Voltas 1.5 Ton</li>
+      <li class="p-4 border rounded hover:bg-gray-50 cursor-pointer">Activa 6G vs Ola S1 Pro</li>
+    </ul>
+  </section>
+
+  <!-- Ask AI Section -->
+  <section class="py-12 px-6 max-w-3xl mx-auto" id="askai">
+    <h2 class="text-2xl font-bold mb-4 text-center">Ask AI to Help You Decide</h2>
+    <form class="flex flex-col sm:flex-row items-center gap-4">
+      <input type="text" placeholder="e.g., Best fridge under 30,000" class="flex-grow px-4 py-2 border rounded w-full">
+      <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded">Ask AI</button>
+    </form>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="py-12 px-6 max-w-5xl mx-auto" id="blog">
+    <h2 class="text-2xl font-bold mb-6 text-center">Smart Buying Guides</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border rounded shadow p-4">
+        <h3 class="font-bold mb-2">Top 5 ACs for Indian Summers</h3>
+        <p class="text-sm text-gray-600">Stay cool with our AI-picked air conditioners.</p>
+      </div>
+      <div class="border rounded shadow p-4">
+        <h3 class="font-bold mb-2">Budget Phones under ₹20,000</h3>
+        <p class="text-sm text-gray-600">Compare battery, camera, and more.</p>
+      </div>
+      <div class="border rounded shadow p-4">
+        <h3 class="font-bold mb-2">Electric Scooters Comparison</h3>
+        <p class="text-sm text-gray-600">Which one gives you max range and style?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 text-center text-sm text-gray-600 py-6 mt-12">
+    © 2025 CompAIro. Powered by Groq AI & Flipkart API.
+  </footer>
+</body>
+</html>
