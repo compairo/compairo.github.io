@@ -5,83 +5,89 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CompAIro - Compare Smart. Choose Better.</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
   <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
     .highlight-ai {
       color: #06b6d4;
       font-weight: bold;
     }
   </style>
 </head>
-<body class="bg-white text-gray-900 font-sans scroll-smooth">
+<body class="bg-gray-50 text-gray-900 font-sans scroll-smooth">
   <!-- Hero Section -->
-  <header class="bg-gray-900 text-white py-16 text-center">
-    <h1 class="text-4xl font-bold mb-4">Welcome to <span class="text-white">Comp</span><span class="highlight-ai">AI</span><span class="text-white">ro</span></h1>
-    <p class="text-lg mb-6">Compare anything. Choose smart with AI.</p>
-    <div>
-      <a href="#manualcompare" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded mr-4 focus:ring-4 ring-teal-300 transition">Compare Now</a>
-      <a href="#askai" class="bg-white text-gray-900 px-6 py-2 border rounded hover:bg-gray-100 focus:ring-4 ring-gray-300 transition">Ask AI</a>
+  <header class="bg-gradient-to-r from-gray-900 to-gray-800 text-white py-16 text-center shadow-md">
+    <h1 class="text-4xl font-bold mb-4" data-aos="fade-down">Welcome to <span class="text-white">Comp</span><span class="highlight-ai">AI</span><span class="text-white">ro</span></h1>
+    <p class="text-lg mb-6" data-aos="fade-up">Compare anything. Choose smart with AI.</p>
+    <div data-aos="fade-up" data-aos-delay="100">
+      <a href="#askai" class="bg-white text-gray-900 px-6 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:ring-4 ring-gray-300 transition shadow">Ask AI</a>
     </div>
   </header>
 
   <!-- Manual Compare Section -->
-  <section id="manualcompare" class="py-12 px-6 max-w-3xl mx-auto">
-    <h2 class="text-2xl font-bold mb-6 text-center">Manual Product Comparison</h2>
+  <section id="manualcompare" class="py-16 px-6 max-w-3xl mx-auto" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Manual Product Comparison</h2>
     <p class="text-center text-gray-600 mb-8">Type up to three product names or model numbers you’d like to compare, then press <strong>Compare</strong>.</p>
     <form class="space-y-4">
-      <input type="text" placeholder="Product 1 (e.g., iPhone 15)" class="w-full px-4 py-2 border rounded" />
-      <input type="text" placeholder="Product 2 (e.g., Samsung S24 Ultra)" class="w-full px-4 py-2 border rounded" />
-      <input type="text" placeholder="Product 3 (optional)" class="w-full px-4 py-2 border rounded" />
-      <button type="submit" class="w-full bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded text-lg font-semibold">Compare</button>
+      <input type="text" placeholder="Product 1 (e.g., iPhone 15)" class="w-full px-4 py-3 border border-gray-300 rounded shadow-sm" />
+      <input type="text" placeholder="Product 2 (e.g., Samsung S24 Ultra)" class="w-full px-4 py-3 border border-gray-300 rounded shadow-sm" />
+      <input type="text" placeholder="Product 3 (optional)" class="w-full px-4 py-3 border border-gray-300 rounded shadow-sm" />
+      <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded mx-auto block text-lg font-semibold shadow-md transition-all duration-300 flex items-center justify-center gap-2">
+        <span>Compare</span> <span>🤖</span>
+      </button>
     </form>
   </section>
 
   <!-- Top Categories -->
-  <section class="py-12 px-6 max-w-6xl mx-auto" id="categories">
-    <h2 class="text-2xl font-bold mb-6 text-center">Top Categories</h2>
+  <section class="py-16 px-6 max-w-6xl mx-auto" id="categories" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Top Categories</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div class="p-4 border rounded shadow">📱 Mobiles</div>
-      <div class="p-4 border rounded shadow">💻 Laptops</div>
-      <div class="p-4 border rounded shadow">🧊 Appliances</div>
-      <div class="p-4 border rounded shadow">👟 Fashion</div>
-      <div class="p-4 border rounded shadow">🛵 Scooters</div>
-      <div class="p-4 border rounded shadow">🚗 Cars</div>
-      <div class="p-4 border rounded shadow">🎧 Gadgets</div>
-      <div class="p-4 border rounded shadow">📚 Books</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">📱 Mobiles</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">💻 Laptops</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">🧊 Appliances</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">👟 Fashion</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">🛵 Scooters</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">🚗 Cars</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">🎧 Gadgets</div>
+      <div class="p-4 border rounded shadow bg-white cursor-pointer hover:bg-gray-100 transition">📚 Books</div>
     </div>
   </section>
 
   <!-- Popular Comparisons -->
-  <section class="py-12 px-6 max-w-4xl mx-auto" id="compare">
-    <h2 class="text-2xl font-bold mb-6 text-center">Popular Comparisons</h2>
+  <section class="py-16 px-6 max-w-4xl mx-auto" id="compare" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Popular Comparisons</h2>
     <ul class="space-y-4">
-      <li class="p-4 border rounded hover:bg-gray-50 cursor-pointer">iPhone 15 vs Samsung S24 Ultra</li>
-      <li class="p-4 border rounded hover:bg-gray-50 cursor-pointer">LG 1.5 Ton AC vs Voltas 1.5 Ton</li>
-      <li class="p-4 border rounded hover:bg-gray-50 cursor-pointer">Activa 6G vs Ola S1 Pro</li>
+      <li class="p-4 border rounded hover:bg-gray-100 cursor-pointer bg-white shadow">iPhone 15 vs Samsung S24 Ultra</li>
+      <li class="p-4 border rounded hover:bg-gray-100 cursor-pointer bg-white shadow">LG 1.5 Ton AC vs Voltas 1.5 Ton</li>
+      <li class="p-4 border rounded hover:bg-gray-100 cursor-pointer bg-white shadow">Activa 6G vs Ola S1 Pro</li>
     </ul>
   </section>
 
   <!-- Ask AI Section -->
-  <section class="py-12 px-6 max-w-3xl mx-auto" id="askai">
-    <h2 class="text-2xl font-bold mb-4 text-center">Ask AI to Help You Decide</h2>
+  <section class="py-16 px-6 max-w-3xl mx-auto" id="askai" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-4 text-center text-gray-800">Ask AI to Help You Decide</h2>
     <form class="flex flex-col sm:flex-row items-center gap-4">
-      <input type="text" placeholder="e.g., Best fridge under 30,000" class="flex-grow px-4 py-2 border rounded w-full">
-      <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-2 rounded">Ask AI</button>
+      <input type="text" placeholder="e.g., Best fridge under 30,000" class="flex-grow px-4 py-3 border border-gray-300 rounded w-full shadow-sm">
+      <button type="submit" class="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded shadow">Ask AI</button>
     </form>
   </section>
 
   <!-- Blog Section -->
-  <section class="py-12 px-6 max-w-5xl mx-auto" id="blog">
-    <h2 class="text-2xl font-bold mb-6 text-center">Smart Buying Guides</h2>
+  <section class="py-16 px-6 max-w-5xl mx-auto" id="blog" data-aos="fade-up">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Smart Buying Guides</h2>
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="border rounded shadow p-4">
+      <div class="border rounded shadow p-4 bg-white">
         <h3 class="font-bold mb-2">Top 5 ACs for Indian Summers</h3>
         <p class="text-sm text-gray-600">Stay cool with our AI-picked air conditioners.</p>
       </div>
-      <div class="border rounded shadow p-4">
+      <div class="border rounded shadow p-4 bg-white">
         <h3 class="font-bold mb-2">Budget Phones under ₹20,000</h3>
         <p class="text-sm text-gray-600">Compare battery, camera, and more.</p>
       </div>
-      <div class="border rounded shadow p-4">
+      <div class="border rounded shadow p-4 bg-white">
         <h3 class="font-bold mb-2">Electric Scooters Comparison</h3>
         <p class="text-sm text-gray-600">Which one gives you max range and style?</p>
       </div>
@@ -89,8 +95,17 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-100 text-center text-sm text-gray-600 py-6 mt-12">
+  <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white text-center text-sm py-6 mt-12">
     © 2025 CompAIro. Powered by Groq AI & Flipkart API.
   </footer>
+
+  <!-- AOS Animation Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 800,
+    });
+  </script>
 </body>
 </html>
