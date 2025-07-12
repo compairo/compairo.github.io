@@ -131,7 +131,7 @@
       aiResult.classList.remove("hidden");
 
       try {
-        const response = await fetch("https://compairo-openrouter-backend.onrender.com/compare", {
+        const response = await fetch("https://compairo-openrouter-backend.onrender.com/api/compare", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ product1: p1, product2: p2, product3: p3 })
