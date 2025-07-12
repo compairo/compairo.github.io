@@ -10,6 +10,18 @@
   <style>
     body { font-family: 'Inter', sans-serif; }
     .highlight-ai { color: #06b6d4; font-weight: bold; }
+    .spinner {
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: #6366f1;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans scroll-smooth">
@@ -38,11 +50,16 @@
     <!-- AI Result Placeholder -->
     <div id="aiResult" class="mt-12 hidden">
       <h3 class="text-2xl font-bold mb-4 text-gray-800">AI Recommendation</h3>
-      <div id="aiText" class="bg-white border border-blue-200 rounded-xl p-6 shadow-md text-gray-800 whitespace-pre-line leading-relaxed tracking-normal text-[17px]">
+      <div id="aiText" class="bg-white border border-blue-200 rounded-xl p-6 shadow-md text-gray-800 leading-relaxed tracking-normal text-[17px]">
         <div class="flex items-center gap-2 text-blue-700 font-semibold text-lg mb-3">
           🤖 CompAIro Verdict
         </div>
-        <div id="aiContentText">AI response will appear here...</div>
+        <div id="aiLoader" class="hidden spinner"></div>
+        <div id="aiContentText" class="whitespace-pre-line"></div>
+        <div class="flex justify-between items-center mt-4">
+          <button id="shareBtn" class="text-sm text-blue-600 hover:underline">🔗 Copy Verdict</button>
+          <a id="gAnalyticsLink" href="#" class="text-sm text-gray-400" target="_blank" rel="nofollow">View Similar Searches</a>
+        </div>
       </div>
     </div>
   </section>
@@ -94,11 +111,15 @@
     const form = document.getElementById('compareForm');
     const aiResult = document.getElementById('aiResult');
     const aiContent = document.getElementById('aiContentText');
+    const aiLoader = document.getElementById('aiLoader');
+    const shareBtn = document.getElementById('shareBtn');
+    const gAnalyticsLink = document.getElementById('gAnalyticsLink');
     const backendURL = 'https://compairo-openrouter-backend.onrender.com/api/compare';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      aiContent.textContent = '⏳ Thinking…';
+      aiContent.textContent = '';
+      aiLoader.classList.remove('hidden');
       aiResult.classList.remove('hidden');
 
       const p1 = document.getElementById('prod1').value.trim();
@@ -106,6 +127,7 @@
       const p3 = document.getElementById('prod3').value.trim();
 
       if (!p1 || !p2) {
+        aiLoader.classList.add('hidden');
         aiContent.textContent = '🚫 Please enter at least two products.';
         return;
       }
@@ -117,15 +139,27 @@
           body: JSON.stringify({ products: [p1, p2, ...(p3 ? [p3] : [])] })
         });
         const data = await res.json();
+        aiLoader.classList.add('hidden');
         if (res.ok) {
           aiContent.textContent = data.reply || 'No response from AI.';
         } else {
           aiContent.textContent = data.error || 'Error generating comparison.';
         }
+        gAnalyticsLink.href = `https://www.google.com/search?q=${encodeURIComponent(p1 + ' vs ' + p2 + (p3 ? ' vs ' + p3 : ''))}`;
       } catch (err) {
+        aiLoader.classList.add('hidden');
         aiContent.textContent = '⚠️ Network error. Please try again later.';
         console.error(err);
       }
+    });
+
+    shareBtn.addEventListener('click', () => {
+      const text = aiContent.textContent;
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        shareBtn.textContent = '✅ Copied!';
+        setTimeout(() => (shareBtn.textContent = '🔗 Copy Verdict'), 2000);
+      });
     });
   </script>
 </body>
