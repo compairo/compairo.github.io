@@ -18,7 +18,7 @@
     <h1 class="text-4xl font-bold mb-4" data-aos="fade-down">Welcome to <span class="text-white">Comp</span><span class="highlight-ai">AI</span><span class="text-white">ro</span></h1>
     <p class="text-lg mb-6" data-aos="fade-up">Compare anything. Choose smart with AI.</p>
     <div data-aos="fade-up" data-aos-delay="100">
-      <a href="#askai" class="bg-white text-gray-900 px-6 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:ring-4 ring-gray-300 transition shadow">Ask AI</a>
+      <a href="#manualcompare" class="bg-white text-gray-900 px-6 py-2 border border-gray-300 rounded hover:bg-gray-100 focus:ring-4 ring-gray-300 transition shadow">Ask AI</a>
     </div>
   </header>
 
@@ -93,11 +93,12 @@
 
     const form = document.getElementById('compareForm');
     const aiResult = document.getElementById('aiResult');
-    const aiText = document.getElementById('aiText');
+    const aiContent = document.getElementById('aiContentText');
+    const backendURL = 'https://compairo-openrouter-backend.onrender.com/api/compare';
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      aiText.textContent = 'Thinking…';
+      aiContent.textContent = '⏳ Thinking…';
       aiResult.classList.remove('hidden');
 
       const p1 = document.getElementById('prod1').value.trim();
@@ -105,12 +106,26 @@
       const p3 = document.getElementById('prod3').value.trim();
 
       if (!p1 || !p2) {
-        aiText.textContent = 'Please enter at least two products.';
+        aiContent.textContent = '🚫 Please enter at least two products.';
         return;
       }
 
-      // API call will be added later
-      document.getElementById('aiContentText').textContent = `Comparison submitted for:\n1. ${p1}\n2. ${p2}${p3 ? `\n3. ${p3}` : ''}\n(AI response will be shown here once API is connected.)`;
+      try {
+        const res = await fetch(backendURL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ products: [p1, p2, ...(p3 ? [p3] : [])] })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          aiContent.textContent = data.reply || 'No response from AI.';
+        } else {
+          aiContent.textContent = data.error || 'Error generating comparison.';
+        }
+      } catch (err) {
+        aiContent.textContent = '⚠️ Network error. Please try again later.';
+        console.error(err);
+      }
     });
   </script>
 </body>
