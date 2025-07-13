@@ -103,8 +103,7 @@
   <footer class="bg-gradient-to-r from-gray-900 to-gray-800 text-white text-center text-sm py-6 mt-12">
     © 2025 CompAIro. Powered by AI. No paid ads, ever.
   </footer>
-
-  <!-- Scripts -->
+<!-- Scripts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
   AOS.init({ once: true, duration: 800 });
@@ -124,14 +123,15 @@
 
     const products = [p1, p2, p3].filter(Boolean);
     if (products.length < 2) {
-      aiContent.textContent = "Please enter at least two products.";
+      aiContent.textContent = "❌ Please enter at least two products.";
       aiResult.classList.remove("hidden");
       return;
     }
 
     aiLoader.classList.remove("hidden");
-    aiContent.textContent = "";
+    aiContent.textContent = "Generating smart comparison...";
     aiResult.classList.remove("hidden");
+    form.querySelector("button[type='submit']").disabled = true;
 
     try {
       const response = await fetch("https://compairo-openrouter-backend.onrender.com/api/compare", {
@@ -142,12 +142,21 @@
 
       const data = await response.json();
       aiLoader.classList.add("hidden");
+      form.querySelector("button[type='submit']").disabled = false;
 
-      // ✅ Corrected key: `result` (was `reply` in your old code)
-      aiContent.textContent = data?.result || data?.error || "AI could not generate a comparison.";
+      if (data.result && typeof data.result === "string") {
+        aiContent.textContent = data.result.trim();
+      } else if (data.error) {
+        aiContent.textContent = `⚠️ Error: ${data.error}`;
+      } else {
+        aiContent.textContent = "⚠️ Unexpected response format.";
+      }
+
     } catch (err) {
       aiLoader.classList.add("hidden");
-      aiContent.textContent = "An error occurred while connecting to the AI server.";
+      form.querySelector("button[type='submit']").disabled = false;
+      aiContent.textContent = "❌ An error occurred while connecting to the AI server.";
+      console.error("Fetch error:", err);
     }
   });
 
@@ -162,3 +171,4 @@
 </script>
 </body>
 </html>
+
