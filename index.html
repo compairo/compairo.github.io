@@ -115,35 +115,38 @@
     const shareBtn=document.getElementById('shareBtn');
     const gAnalyticsLink=document.getElementById('gAnalyticsLink');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const p1 = document.getElementById('prod1').value.trim();
-      const p2 = document.getElementById('prod2').value.trim();
-      const p3 = document.getElementById('prod3').value.trim();
-      if (!p1 || !p2) {
-        aiContent.textContent = "Please enter at least two products.";
-        aiResult.classList.remove("hidden");
-        return;
-      }
+   form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const p1 = document.getElementById('prod1').value.trim();
+  const p2 = document.getElementById('prod2').value.trim();
+  const p3 = document.getElementById('prod3').value.trim();
 
-      aiLoader.classList.remove("hidden");
-      aiContent.textContent = "";
-      aiResult.classList.remove("hidden");
+  const products = [p1, p2, p3].filter(Boolean);
+  if (products.length < 2) {
+    aiContent.textContent = "Please enter at least two products.";
+    aiResult.classList.remove("hidden");
+    return;
+  }
 
-      try {
-        const response = await fetch("https://compairo-openrouter-backend.onrender.com/api/compare", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ product1: p1, product2: p2, product3: p3 })
-        });
-        const data = await response.json();
-        aiLoader.classList.add("hidden");
-        aiContent.textContent = data?.result || "AI could not generate a comparison.";
-      } catch (err) {
-        aiLoader.classList.add("hidden");
-        aiContent.textContent = "An error occurred while connecting to the AI server.";
-      }
+  aiLoader.classList.remove("hidden");
+  aiContent.textContent = "";
+  aiResult.classList.remove("hidden");
+
+  try {
+    const response = await fetch("https://compairo-openrouter-backend.onrender.com/api/compare", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ products })
     });
+
+    const data = await response.json();
+    aiLoader.classList.add("hidden");
+    aiContent.textContent = data?.reply || data?.error || "AI could not generate a comparison.";
+  } catch (err) {
+    aiLoader.classList.add("hidden");
+    aiContent.textContent = "An error occurred while connecting to the AI server.";
+  }
+});
 
     shareBtn.addEventListener('click', () => {
       const text = aiContent.textContent;
